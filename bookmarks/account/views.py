@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-from .forms import LoginForm
+# from .forms import LoginForm
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 #def user_login(request):
 #  if request.method == 'POST':
@@ -27,3 +28,19 @@ from django.http import HttpResponse
 #    form = LoginForm()
 #    
 #  return render(request, 'account/login.html', {'form': form})
+
+
+# If the user is authenticated, it executes the decorated view; if the user
+# is not authenticated, it redirects him to the login URL with the URL he was trying to
+# access as a GET parameter named next .
+# Remember that we added a hidden input in the form of our log in template for this purpose.
+@login_required
+def dashboard(request):
+  return render(request, 'account/dashboard.html', {'section': 'dashboard'})
+  
+  
+  
+  
+  
+  
+  
