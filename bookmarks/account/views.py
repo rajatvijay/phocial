@@ -3,14 +3,14 @@ from django.contrib.auth import authenticate, login
 # from .forms import LoginForm
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .froms import UserRegistrationForm
+from .forms import UserRegistrationForm
 
 def register(request):
   new_user = None
   if request.method == 'POST':
     user_form = UserRegistrationForm(request.POST)
     
-    if form.is_valid:
+    if user_form.is_valid():
       new_user = user_form.save(commit=False)
       new_user.set_password(user_form.cleaned_data['password'])
       new_user.save()
