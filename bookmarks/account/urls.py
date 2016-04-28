@@ -21,4 +21,7 @@ urlpatterns = [
   
   # register urls
   url(r'^register/$', views.register, name='register'),
+  
+  # edit proflie
+  url(r'^edit/$', views.edit, name='edit'), 
 ]
