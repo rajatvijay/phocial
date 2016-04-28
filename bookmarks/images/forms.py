@@ -1,6 +1,6 @@
 from django import forms
 from .models import Image
-from urllib import request
+from urllib import urlopen
 from django.core.files.base import ContentFile
 from django.utils.text import slugify
 
@@ -33,7 +33,7 @@ class ImageCreateForm(forms.ModelForm):
     image_name = '{}.{}'.format(slugify(self.cleaned_data['title']), image_url.rsplit('.', 1)[1])
     
     # download the image form the given url
-    response = request.urlopen(image_url)
+    response = urlopen(image_url)
     
     # save the image with its name in the image field of the saved instance
     # but dont save the instance to the db
@@ -41,3 +41,5 @@ class ImageCreateForm(forms.ModelForm):
     
     if commit:
       image_instance.save()
+      
+    return image_instance

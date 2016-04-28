@@ -8,7 +8,7 @@ class Image(models.Model):
   slug = models.SlugField(max_length=200, blank=True)
   url = models.URLField()
   image = models.ImageField(upload_to='images/%Y/%m/%d') # still have no idea what it is
-  desription = models.TextField(blank=True)
+  description = models.TextField(blank=True)
   created = models.DateTimeField(auto_now_add=True, db_index=True)
   users_like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='images_liked', blank=True)
   

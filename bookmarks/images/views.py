@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -11,10 +10,11 @@ def image_create(request):
     form = ImageCreateForm(data=request.POST)
     if form.is_valid():
       cd = form.cleaned_data
+      print cd
       new_item = form.save(commit=False)
       new_item.user = request.user
       new_item.save()
-      message.success(request, 'Image uploaded successfully')
+      messages.success(request, 'Image uploaded successfully')
       
       return redirect(new_item.get_absolute_url())
       

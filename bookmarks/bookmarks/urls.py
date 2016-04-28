@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^account/', include('account.urls')),
     url(r'^$', views.dashboard, name='dashboard'),
     url('social-auth/', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^images/', include('images.urls', namespace='images')),
 ]
 
 # what is static()

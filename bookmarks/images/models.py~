@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.utils.text import slugify
 
 class Image(models.Model):
   user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='images_created')
