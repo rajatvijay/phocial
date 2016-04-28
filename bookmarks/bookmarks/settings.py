@@ -66,6 +66,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'FjoCwzaHQ20lmZkVIKmY6b6M' # Google Consumer 
 
 INSTALLED_APPS = (
     'account',
+    'images',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
