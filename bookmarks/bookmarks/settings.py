@@ -31,6 +31,12 @@ SECRET_KEY = 'kj+083khx)hw(0olq$p#jk+d9s8j+7n$+qw-cun8(fgj@*2)1%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Custom Authetication backened
+AUTHENTICATION_BACKENDS = (
+  'django.contrib.auth.backends.ModelBackend',
+  'account.authentication.EmailAuthBackend',
+)
+
 ALLOWED_HOSTS = []
 
 # Email backened
