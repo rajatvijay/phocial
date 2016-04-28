@@ -22,8 +22,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^account/', include('account.urls')),
-    url(r'^$', views.dashboard, name='dashboard')
+    url(r'^$', views.dashboard, name='dashboard'),
+    url('social-auth/', include('social.apps.django_app.urls', namespace='social')),
 ]
 
+# what is static()
 if settings.DEBUG:
   urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
