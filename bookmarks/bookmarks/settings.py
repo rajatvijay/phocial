@@ -57,6 +57,10 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_TWITTER_KEY = 'i0GVS0HtoC02avhSYTQx4EktD' # Twitter Consumer Key
 SOCIAL_AUTH_TWITTER_SECRET = 'qXMUlyg7cMYxkqkI41sPyjXTErlbji1VnRPZOkDFaU1g5DES2P' # Twitter Consumer Secret
 
+# Google Auth
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1005072635891-f2i7micjqcaqc84721fptnrgd77hk903.apps.googleusercontent.com' # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'FjoCwzaHQ20lmZkVIKmY6b6M' # Google Consumer Secret
+
 
 # Application definition
 
