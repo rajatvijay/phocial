@@ -36,6 +36,7 @@ AUTHENTICATION_BACKENDS = (
   'django.contrib.auth.backends.ModelBackend',
   'account.authentication.EmailAuthBackend',
   'social.backends.facebook.Facebook2OAuth2',
+  'social.backends.twitter.TwitterOAuth',
 )
 
 ALLOWED_HOSTS = []
@@ -51,6 +52,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 SOCIAL_AUTH_FACEBOOK_KEY = '694153904068955' # Facebook App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '53e5f269b9d4fb3a357662f154720657' # Facebook App Secret
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+# Twitter Auth
+SOCIAL_AUTH_TWITTER_KEY = 'i0GVS0HtoC02avhSYTQx4EktD' # Twitter Consumer Key
+SOCIAL_AUTH_TWITTER_SECRET = 'qXMUlyg7cMYxkqkI41sPyjXTErlbji1VnRPZOkDFaU1g5DES2P' # Twitter Consumer Secret
 
 
 # Application definition
