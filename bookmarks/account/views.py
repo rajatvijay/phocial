@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm
 from .models import Profile
 from django.contrib import messages
+from django.contrib.auth.views import login as contrib_login
 
 def register(request):
   new_user = None
@@ -49,6 +50,15 @@ def register(request):
 #    
 #  return render(request, 'account/login.html', {'form': form})
 
+
+def login(request, **kwargs):
+  ### My Code: BEGINS
+    print request.user.is_authenticated
+    if request.user.is_authenticated():
+      return render(request, 'registration/already_authenticated.html', {'user_name': request.user.username})
+    ### My Code: ENDS
+    else:
+      return contrib_login(request, **kwargs)
 
 # If the user is authenticated, it executes the decorated view; if the user
 # is not authenticated, it redirects him to the login URL with the URL he was trying to

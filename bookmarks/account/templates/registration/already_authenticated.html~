@@ -3,7 +3,16 @@
 {% block title %}Oops!{% endblock %}
 
 {% block content %}
-  <h1>Oops!, Kinldy 
-  <a href="{% url 'logout' %}">logout</a> 
-  to login with different username or email</h1>
+  <h1>Oops!, Dear {{ user_name }}</h1>
+  
+  <p>
+    Kindly
+    <a href="{% url 'logout' %}">logout</a> 
+    to login with different username or email.
+  </p>
+  
+  <p>
+    Or Go back to your
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+  </p>
 {% endblock %}
