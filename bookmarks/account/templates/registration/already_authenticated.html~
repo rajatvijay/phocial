@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Oops!{% endblock %}
+
+{% block content %}
+  <h1>Oops!, Kinldy 
+  <a href="{% url 'logout' %}">logout</a> 
+  to login with different username or email</h1>
+{% endblock %}
