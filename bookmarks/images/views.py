@@ -37,14 +37,18 @@ def image_like(request):
   action = request.POST.get('action')
   
   if image_id and action :
+    print 'inside status OK block'
     try:
       image = Image.objects.get(id=image_id)
+      print 'image retreived'
       if action == 'like':
-        image.user_like.add(request.user)
+        image.users_like.add(request.user)
       else:
-        image.user_like.remove(request.user)
+        image.users_like.remove(request.user)
+      print 'image retreived returning OK'
       return JsonResponse({'status': 'ok'})
     except:
+      print 'unable to retrieve image'
       pass
-      
+  print 'returning KO'    
   return JsonResponse({'status': 'ko'})

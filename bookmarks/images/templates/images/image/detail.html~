@@ -13,7 +13,7 @@
   
   <!-- Using the  with  template tag is useful to prevent 
   Django from evaluating QuerySets multiple times. -->
-  {% with total_likes=image.users_like.count user_like=image.users_like.all() %}
+  {% with total_likes=image.users_like.count user_like=image.users_like.all %}
     <div class="image-info">
       <div>
         <span class="count">
@@ -40,43 +40,47 @@
       {% endfor %}
     </div>
   {% endwith %}
+{% endblock %}
   
-  {% block domready %}
-    $('a.like').click(function(e){
+{% block domready %}
+  $('a.like').click(function(e){
+  console.log('like button clicked')
     
-      // to avoid the default behavior of the a element. 
-      // This will prevent from the link taking us anywhere.
-      e.preventDefault();
+    // to avoid the default behavior of the a element. 
+    // This will prevent from the link taking us anywhere.
+    e.preventDefault();
+    console.log('prevented default behaviour')
       
-      // perform an asynchronous POST request to the server
-      $.post('{% url "images:like" %}',
+    // perform an asynchronous POST request to the server
+    $.post('{% url "images:like" %}',
         
-        // POST parameters dictionary to send in the request
+      // POST parameters dictionary to send in the request
+      {
+        id: $(this).data('id'),
+        action: $(this).data('action')
+      },
+        
+      // callback function that is executed when the HTTP response is received
+      // data is the JsonResonse or any other data receives may it be XML ot Http headers
+      function(data){
+        if (data['status'] == 'ok')
         {
-          id: $(this).data('id'),
-          action: $(this).data('action')
-        },
-        
-        // callback function that is executed when the HTTP response is received
-        // data is the JsonResonse or any other data receives may it be XML ot Http headers
-        function(data){
-          if (data['status'] == 'ok')
-          {
-            var previous_action = $('a.like').data('action');
+          console.log('inside callback function')
+          // we store the previous action to provide the functionality of UNDO
+          var previous_action = $('a.like').data('action');
             
-            // toggle data-action
-            $('a.like').data('action', previous_action == 'like' ?
-            'unlike' : 'like');
+          console.log('changing data action')
+          // toggle data-action
+          $('a.like').data('action', previous_action == 'like' ? 'unlike' : 'like');
             
-            // toggle link text
-            $('a.like').text(previous_action == 'like' ? 'Unlike' :
-            'Like');
+          console.log('changing button text')
+          // toggle link text
+          $('a.like').text(previous_action == 'like' ? 'Unlike' : 'Like');
             
-            // update total likes
-            var previous_likes = parseInt($('span.count .total').text());
-            $('span.count .total').text(previous_action == 'like' ? previous_likes + 1 : previous_likes - 1);
-          }});
-    });
-  {% endblock %}
-  
+          console.log('updating total likes')
+          // update total likes
+          var previous_likes = parseInt($('span.count .total').text());
+          $('span.count .total').text(previous_action == 'like' ? previous_likes + 1 : previous_likes - 1);
+        }});
+  });
 {% endblock %}
