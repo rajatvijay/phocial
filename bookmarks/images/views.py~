@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from common.decorators import ajax_required
 from django.http import HttpResponse
-from django.core.paginator import Paaginator, PageNotAnIntager, EmptyPage
+from django.core.paginator import Paginator, PageNotAnIntager, EmptyPage
 
 @login_required
 def image_create(request):
