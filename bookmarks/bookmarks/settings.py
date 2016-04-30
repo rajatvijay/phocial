@@ -61,6 +61,8 @@ SOCIAL_AUTH_TWITTER_SECRET = 'qXMUlyg7cMYxkqkI41sPyjXTErlbji1VnRPZOkDFaU1g5DES2P
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1005072635891-f2i7micjqcaqc84721fptnrgd77hk903.apps.googleusercontent.com' # Google Consumer Key
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'FjoCwzaHQ20lmZkVIKmY6b6M' # Google Consumer Secret
 
+THUMBNAIL_DEBUG = True
+
 
 # Application definition
 
@@ -74,6 +76,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
+    'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
