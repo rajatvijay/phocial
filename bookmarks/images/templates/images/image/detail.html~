@@ -13,7 +13,7 @@
   
   <!-- Using the  with  template tag is useful to prevent 
   Django from evaluating QuerySets multiple times. -->
-  {% with total_likes=image.users_like.count user_like=image.users_like.all %}
+  {% with total_likes=image.users_like.count users_like=image.users_like.all %}
     <div class="image-info">
       <div>
         <span class="count">
@@ -30,7 +30,7 @@
       {{ image.description|linebreaks }}
     </div>
     <div class="image-likes">
-      {% for user in image.users_like.all %}
+      {% for user in users_like %}
         <div>
           <img src="{{ user.profile.photo.url }}">
           <p>{{ user.first_name }}</p>

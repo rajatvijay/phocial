@@ -44,12 +44,10 @@
   
 {% block domready %}
   $('a.like').click(function(e){
-  console.log('like button clicked')
     
     // to avoid the default behavior of the a element. 
     // This will prevent from the link taking us anywhere.
     e.preventDefault();
-    console.log('prevented default behaviour')
       
     // perform an asynchronous POST request to the server
     $.post('{% url "images:like" %}',
@@ -65,19 +63,15 @@
       function(data){
         if (data['status'] == 'ok')
         {
-          console.log('inside callback function')
           // we store the previous action to provide the functionality of UNDO
           var previous_action = $('a.like').data('action');
             
-          console.log('changing data action')
           // toggle data-action
           $('a.like').data('action', previous_action == 'like' ? 'unlike' : 'like');
             
-          console.log('changing button text')
           // toggle link text
           $('a.like').text(previous_action == 'like' ? 'Unlike' : 'Like');
             
-          console.log('updating total likes')
           // update total likes
           var previous_likes = parseInt($('span.count .total').text());
           $('span.count .total').text(previous_action == 'like' ? previous_likes + 1 : previous_likes - 1);

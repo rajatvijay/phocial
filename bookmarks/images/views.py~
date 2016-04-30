@@ -48,6 +48,7 @@ def image_like(request):
       print 'image retreived returning OK'
       return JsonResponse({'status': 'ok'})
     except:
+      print 'unable to retrieve image'
       pass
-      
+  print 'returning KO'    
   return JsonResponse({'status': 'ko'})
