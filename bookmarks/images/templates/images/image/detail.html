@@ -43,15 +43,26 @@
   
   {% block domready %}
     $('a.like').click(function(e){
+    
+      // to avoid the default behavior of the a element. 
+      // This will prevent from the link taking us anywhere.
       e.preventDefault();
+      
+      // perform an asynchronous POST request to the server
       $.post('{% url "images:like" %}',
+        
+        // POST parameters dictionary to send in the request
         {
           id: $(this).data('id'),
           action: $(this).data('action')
         },
+        
+        // callback function that is executed when the HTTP response is received
+        // data is the JsonResonse or any other data receives may it be XML ot Http headers
         function(data){
           if (data['status'] == 'ok')
           {
+            // we store the previous action to provide the functionality of UNDO
             var previous_action = $('a.like').data('action');
             
             // toggle data-action
