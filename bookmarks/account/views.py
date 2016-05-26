@@ -14,6 +14,7 @@ from django.views.decorators.http import require_POST
 from common.decorators import ajax_required
 from .models import Contact
 from actions.utils import create_action
+from actions.models import Action
 
 def register(request):
   new_user = None
@@ -75,7 +76,16 @@ def login(request, **kwargs):
 # Remember that we added a hidden input in the form of our log in template for this purpose.
 @login_required
 def dashboard(request):
-  return render(request, 'account/dashboard.html', {'section': 'dashboard'})
+
+  actions = Action.objects.exclude(user=request.user)
+  following_ids = request.user.following.values_list('id', flat=True)
+
+  if following_ids:
+    actions = actions.objects.filter(user_id__in=following_ids)
+
+  actions = actions[:10]
+
+  return render(request, 'account/dashboard.html', {'section': 'dashboard', 'actions': actions})
   
 @login_required
 def edit(request):
