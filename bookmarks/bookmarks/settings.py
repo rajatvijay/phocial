@@ -121,6 +121,10 @@ DATABASES = {
     }
 }
 
+#Adding canonical url
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username]),
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

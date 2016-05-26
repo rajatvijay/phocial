@@ -9,6 +9,7 @@ from common.decorators import ajax_required
 from django.http import HttpResponse
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
+
 @login_required
 def image_create(request):
   if request.method == 'POST':
