@@ -105,12 +105,13 @@ def user_detail(request, username):
 
   return render(request, 'account/user/detail.html', {'section': 'people', 'user': user})
 
-@login_required
-@require_POST
+
 @ajax_required
+@require_POST
+@login_required
 def user_follow(request):
-  user_id = request.POST('id')
-  action = request.POST('action')
+  user_id = request.POST.get('id')
+  action = request.POST.get('action')
 
   if user_id and action :
 
