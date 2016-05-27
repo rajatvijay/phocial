@@ -81,7 +81,7 @@ def dashboard(request):
   following_ids = request.user.following.values_list('id', flat=True)
 
   if following_ids:
-    actions = actions.objects.filter(user_id__in=following_ids).select_related('user', 'user__profile').prefetch_related('target')
+    actions = actions.filter(user_id__in=following_ids).select_related('user', 'user__profile').prefetch_related('target')
 
   actions = actions[:10]
 
