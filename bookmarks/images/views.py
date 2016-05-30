@@ -9,7 +9,10 @@ from common.decorators import ajax_required
 from django.http import HttpResponse
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from actions.utils import create_action
+from django.conf import settings
+import redis
 
+r = redis.StrictRedis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)
 
 @login_required
 def image_create(request):
