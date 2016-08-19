@@ -1,1 +1,1 @@
-web: gunicorn bookmarks.wsgi --log-file -
+web: bookmarks manage.py runserver 8888
