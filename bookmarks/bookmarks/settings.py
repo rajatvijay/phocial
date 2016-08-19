@@ -29,7 +29,7 @@ LOGOUT_URL = reverse_lazy('logout')
 SECRET_KEY = 'kj+083khx)hw(0olq$p#jk+d9s8j+7n$+qw-cun8(fgj@*2)1%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Custom Authetication backened
 AUTHENTICATION_BACKENDS = (
