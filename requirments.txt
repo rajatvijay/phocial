@@ -16,5 +16,6 @@ requests==2.1.0
 requests-oauthlib==0.6.1
 simplegeneric==0.8.1
 six==1.10.0
+sorl-thumbnail==12.3
 traitlets==4.2.1
 urllib3==1.15.1
