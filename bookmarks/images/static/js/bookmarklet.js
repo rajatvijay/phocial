@@ -1,6 +1,6 @@
 (function(){
   var jquery_version = '2.1.4';
-  var site_url = 'http://127.0.0.1:8000/';
+  var site_url = 'http://phocial.in/';
   var static_url = site_url + 'static/';
   var min_width = 100;
   var min_height = 100;
