@@ -15,6 +15,6 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bookmarks.settings")
 
 application = get_wsgi_application()
 
-from bookmarks.django import Bookmarks
-application = Bookmarks(application)
+# from bookmarks.django import Bookmarks
+# application = Bookmarks(application)
 
