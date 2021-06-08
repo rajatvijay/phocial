@@ -9,7 +9,7 @@ oauthlib==1.1.1
 pathlib2==2.1.0
 pexpect==4.0.1
 pickleshare==0.7.2
-Pillow==2.9.0
+Pillow==8.2.0
 ptyprocess==0.5.1
 PyJWT==1.4.0
 python-openid==2.2.5
